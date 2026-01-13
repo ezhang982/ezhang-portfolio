@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">@EZGhost Studios</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="page-header">
+        <h1>Experimental Projects</h1>
+        <p>A collection of my technical implementations and business logic.</p>
+        <a href="index.html" class="btn">← Back Home</a>
+    </section>
+
+    <section class="demos">
+        <div id="shop-interface">
+            <div class="shop-header">
+                <h2>Official Merch Store</h2>
+                <div class="cart-summary">
+                    <span>🛒 Cart: <span id="cart-count">0</span> items</span>
+                    <span id="cart-total">($0.00)</span>
+                    <button onclick="clearCart()" class="clear-btn">Clear</button>
+                </div>
+            </div>
+
+            <div id="product-container" class="shop-grid">
+                </div>
+        </div>
+
+        <script src="products.js"></script>
+
+        <script>
+            // --- STATE MANAGEMENT ---
+            // This variable keeps track of the user's choices
+            let cart = [];
+
+            // 1. Function to display products (The "Render" logic)
+            function renderProducts() {
+                const container = document.getElementById('product-container');
+                container.innerHTML = ""; // Clear existing content
+
+                products.forEach(product => {
+                    // Create the HTML card for each product
+                    const card = `
+                        <div class="product-card">
+                            <img src="${product.image}" alt="${product.name}">
+                            <div class="p-details">
+                                <h4>${product.name}</h4>
+                                <p class="price">$${product.price.toFixed(2)}</p>
+                                <button onclick="addToCart(${product.id})" class="add-btn">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    // Add it to the grid
+                    container.innerHTML += card;
+                });
+            }
+
+            // 2. Function to handle clicks (The "Business Logic")
+            function addToCart(productId) {
+                // Find the product details
+                const product = products.find(p => p.id === productId);
+                
+                // Add to our cart array
+                cart.push(product);
+                
+                // Update the screen
+                updateCartDisplay();
+            }
+
+            // 3. Update the UI
+            function updateCartDisplay() {
+                const countSpan = document.getElementById('cart-count');
+                const totalSpan = document.getElementById('cart-total');
+                
+                // Calculate total price using .reduce()
+                const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+                countSpan.innerText = cart.length;
+                totalSpan.innerText = "($" + total.toFixed(2) + ")";
+                
+                // Optional: Animation effect
+                countSpan.style.color = "#4facfe";
+                setTimeout(() => countSpan.style.color = "inherit", 200);
+            }
+            
+            function clearCart() {
+                cart = [];
+                updateCartDisplay();
+            }
+
+            // Initialize the shop on load
+            renderProducts();
+        </script>
+    </section>
+
+    <footer>
+        <p>© 2025 Your Name. Built with HTML & CSS.</p>
+    </footer>
+
+</body>
+</html>

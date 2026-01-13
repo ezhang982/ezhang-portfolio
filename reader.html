@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Reader</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific Styles for the Reader Mode */
+        .reader-container {
+            max-width: 800px; /* Limits width so lines aren't too long to read */
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #252525;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .story-header {
+            border-bottom: 2px solid #4facfe;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        #story-title {
+            font-size: 2.5rem;
+            color: #fff;
+        }
+
+        #story-date {
+            color: #888;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* This is the magic part for text formatting */
+        #story-content {
+            font-size: 1.1rem;
+            line-height: 1.8; /* Good spacing for reading */
+            white-space: pre-wrap; /* THIS PRESERVES YOUR PARAGRAPHS */
+            font-family: 'Georgia', serif; /* Serif fonts are better for long reading */
+            color: #ddd;
+        }
+        
+        /* Placeholder for the future image */
+        .story-image {
+            width: 100%;
+            height: 200px;
+            background-color: #333; /* Grey box placeholder */
+            margin-bottom: 20px;
+            display: none; /* Hidden for now */
+            object-fit: cover;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><a href="creative.html" style="color:white; text-decoration:none;">← Back to Gallery</a></div>
+    </nav>
+
+    <div class="reader-container">
+        <img id="story-img" class="story-image" src="" alt="Story Cover">
+
+        <div class="story-header">
+            <h1 id="story-title">Loading Title...</h1>
+            <p id="story-date">Loading Date...</p>
+        </div>
+        
+        <div id="story-content">
+            Loading Content...
+        </div>
+    </div>
+
+    <script src="stories.js"></script>
+    
+    <script>
+        // 1. Get the ID from the URL (e.g., reader.html?id=1)
+        const urlParams = new URLSearchParams(window.location.search);
+        const storyId = urlParams.get('id');
+
+        // 2. Find the matching story in your database
+        // We use '==' to match string "1" to number 1
+        const story = stories.find(s => s.id == storyId);
+
+        // 3. Inject the content into the HTML
+        if (story) {
+            document.getElementById('story-title').innerText = story.title;
+            document.getElementById('story-date').innerText = story.date;
+            document.getElementById('story-content').innerText = story.content;
+            document.title = story.title + " | My Portfolio";
+        } else {
+            document.getElementById('story-content').innerText = "Story not found.";
+        }
+    </script>
+
+</body>
+</html>

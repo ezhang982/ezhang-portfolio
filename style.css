@@ -1,0 +1,311 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #1a1a1a; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    line-height: 1.6;
+}
+
+/* Navigation Styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: #252525;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #4facfe; /* Blue accent */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #e0e0e0;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #4facfe;
+}
+
+/* Hero Section Styles */
+.hero {
+    height: 80vh; /* Takes up 80% of the screen height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.highlight {
+    color: #4facfe;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: #4facfe;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Projects Section */
+#projects {
+    padding: 50px 10%;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.card {
+    background-color: #252525;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #252525;
+    margin-top: 50px;
+    font-size: 0.9rem;
+}
+
+/* Pathways Section */
+.pathway-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Space between the two big buttons */
+    flex-wrap: wrap; /* Wraps to vertical on mobile */
+    margin-top: 20px;
+}
+
+.pathway-card {
+    text-decoration: none; /* Removes underline from links */
+    color: #e0e0e0;
+    background-color: #252525;
+    width: 300px;
+    height: 200px;
+    border: 2px solid #333;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease; /* Smooth animation */
+    cursor: pointer;
+}
+
+.pathway-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.pathway-card p {
+    font-size: 0.9rem;
+    color: #aaa;
+    padding: 0 20px;
+}
+
+.arrow {
+    display: block;
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #4facfe;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effects - The "Pop" */
+.pathway-card:hover {
+    border-color: #4facfe; /* Border turns blue */
+    transform: translateY(-5px); /* Lifts the card up slightly */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Adds a shadow */
+}
+
+.pathway-card:hover .arrow {
+    transform: translateX(10px); /* Arrow moves right */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .pathway-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Story List Styling */
+.story-list {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.story-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #252525;
+    padding: 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #fff;
+    border-left: 4px solid #4facfe; /* Blue accent bar */
+    transition: background 0.2s;
+}
+
+.story-link:hover {
+    background-color: #333;
+}
+
+.story-info h3 {
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+.story-info p {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.read-btn {
+    color: #4facfe;
+    font-weight: bold;
+}
+
+/* Shop Interface */
+#shop-interface {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.shop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+}
+
+/* Cart Summary Box */
+.cart-summary {
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.clear-btn {
+    background: none;
+    border: 1px solid #555;
+    color: #aaa;
+    padding: 2px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.clear-btn:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+/* Product Grid */
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+/* Product Card */
+.product-card {
+    background-color: #252525;
+    border-radius: 8px;
+    overflow: hidden; /* Keeps image inside rounded corners */
+    transition: transform 0.2s;
+    border: 1px solid #333;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: #4facfe;
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Ensures image covers the box without stretching */
+    background-color: #444;
+}
+
+.p-details {
+    padding: 15px;
+    text-align: center;
+}
+
+.p-details h4 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.price {
+    color: #4facfe;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.add-btn {
+    background-color: #e0e0e0;
+    color: #1a1a1a;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+.add-btn:hover {
+    background-color: #4facfe;
+    color: #fff;
+}

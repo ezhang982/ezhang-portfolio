@@ -3,7 +3,7 @@ const stories = [
         id: 1,
         title: "Attack of the Appliances",
         date: "Feb 12, 2021",
-        // PASTE YOUR STORY BETWEEN THE BACKTICKS BELOW
+        // PASTE STORY BETWEEN THE BACKTICKS BELOW
         content: `
 The night air was not so much peaceful as it was dead silent. A full moon hung over the Maryland hills, casting a pale, judgmental light over the sprawling estate. The mansion didn’t look like a home; it looked like an Apple Store had mated with a fortress.
 
